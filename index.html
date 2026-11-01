@@ -4,1012 +4,485 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AWS FUTUREVERSE | MVJCE</title>
 
 <style>
 :root {
-    --black: #050505;
-    --dark: #101010;
-    --red: #ff2020;
-    --red-dark: #9e0000;
-    --white: #ffffff;
-    --grey: #b8b8b8;
+  --bg: #030303;
+  --red: #ff202b;
+  --deep: #7b000b;
+  --white: #f8f5f5;
+  --muted: #bcb4b5;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background: var(--black);
-    color: var(--white);
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-    font: inherit;
+  font: inherit;
 }
 
-/* NAVIGATION */
-
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 20px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.92);
-    border-bottom: 1px solid rgba(255, 32, 32, 0.4);
-    backdrop-filter: blur(12px);
+.topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 5vw;
+  background: linear-gradient(#030303e8, transparent);
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 2px;
+.brand {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .22em;
 }
 
-.logo span {
-    color: var(--red);
+.brand b,
+.title span {
+  color: var(--red);
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
+.nav {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
-.nav-links a {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
+.nav a {
+  opacity: .7;
+  transition: .25s;
 }
 
-.nav-links a:hover {
-    color: var(--red);
+.nav a:hover {
+  opacity: 1;
+  color: var(--red);
 }
 
-#soundButton {
-    border: 1px solid var(--red);
-    color: white;
-    background: transparent;
-    padding: 9px 13px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: 0.3s;
+.sound {
+  border: 1px solid #ff202b80;
+  background: #100305;
+  color: white;
+  border-radius: 99px;
+  padding: 9px 13px;
+  font-size: 10px;
+  cursor: pointer;
 }
 
-#soundButton:hover {
-    background: var(--red);
+.sound:hover {
+  background: var(--red);
+  color: #000;
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero {
-    min-height: 100vh;
-    padding: 140px 7% 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse at 80% 50%, #330000 0%, transparent 45%),
-        linear-gradient(130deg, #050505, #160000, #050505);
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    #260006 0,
+    #080203 35%,
+    #030303 72%
+  );
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 32, 32, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 32, 32, 0.045) 1px, transparent 1px);
-    background-size: 45px 45px;
-    mask-image: linear-gradient(to bottom, black, transparent);
-    pointer-events: none;
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, transparent 49.9%, #ffffff08 50%, transparent 50.1%),
+    linear-gradient(transparent 49.9%, #ffffff08 50%, transparent 50.1%);
+  background-size: 90px 90px;
+  mask-image: linear-gradient(transparent, #000 25%, #000 70%, transparent);
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+.hero-copy {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding: 120px 24px 170px;
+  max-width: 1000px;
 }
 
-.tag {
-    color: var(--red);
-    letter-spacing: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 25px;
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  color: #ff8c92;
+  margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: clamp(45px, 8vw, 105px);
-    font-weight: 900;
-    line-height: 0.98;
-    letter-spacing: -3px;
-    max-width: 950px;
+  font-size: clamp(42px, 8vw, 110px);
+  line-height: .88;
+  letter-spacing: -.07em;
+  font-weight: 900;
 }
 
 .hero h1 span {
-    color: var(--red);
-    text-shadow: 0 0 30px rgba(255, 32, 32, 0.3);
+  display: block;
+  color: var(--red);
+  text-shadow: 0 0 40px #ff202b55;
 }
 
-.hero p {
-    color: var(--grey);
-    font-size: 17px;
-    line-height: 1.8;
-    max-width: 600px;
-    margin-top: 25px;
+.hero-copy p {
+  max-width: 560px;
+  margin: 25px auto 0;
+  color: #ddd0d1;
+  font-size: clamp(12px, 1.4vw, 16px);
+  line-height: 1.8;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 35px;
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
-.btn {
-    display: inline-block;
-    padding: 14px 25px;
-    background: var(--red);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    border: 1px solid var(--red);
-    transition: 0.3s;
+.button {
+  display: inline-block;
+  padding: 13px 18px;
+  background: var(--red);
+  color: #140000;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 1px solid var(--red);
+  transition: .25s;
+  cursor: pointer;
 }
 
-.btn:hover {
-    background: transparent;
-    box-shadow: 0 0 25px rgba(255, 32, 32, 0.35);
+.button.alt {
+  background: transparent;
+  color: white;
+  border-color: #ffffff4a;
 }
 
-.btn-outline {
-    background: transparent;
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px #ff202b33;
 }
 
-.btn-outline:hover {
-    background: var(--red);
+/* CINEMATIC RED EFFECT */
+
+.burst {
+  position: absolute;
+  width: min(75vw, 760px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: .8;
+  filter: drop-shadow(0 0 45px #ff001f35);
+  animation: burstFloat 8s ease-in-out infinite;
 }
 
-/* ROAD */
-
-.road {
-    height: 160px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(0, 0, 0, 0.7) 15%,
-        #101010 16%,
-        #151515 100%
-    );
-    border-top: 2px solid #282828;
-    overflow: hidden;
+.burst:before,
+.burst:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 43% 57% 60% 40% / 42% 42% 58% 58%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #ff202b 0deg 3deg,
+    #a50015 5deg 8deg,
+    #2d0006 10deg 12deg,
+    #f43b49 14deg 16deg
+  );
+  filter: blur(2px);
+  mask-image: radial-gradient(
+    circle at center,
+    #000 0 16%,
+    #000b 30%,
+    transparent 69%
+  );
+  animation: spin 32s linear infinite;
 }
 
-.road::before {
-    content: "";
-    position: absolute;
-    top: 65%;
-    width: 100%;
-    border-top: 4px dashed #555;
-    animation: roadLines 0.6s linear infinite;
+.burst:after {
+  inset: 12%;
+  opacity: .8;
+  transform: rotate(19deg) scale(.88);
+  filter: blur(8px);
+  animation: spinReverse 24s linear infinite;
 }
 
-@keyframes roadLines {
-    from { background-position: 0 0; }
-    to { background-position: -100px 0; }
+.ring {
+  position: absolute;
+  width: min(82vw, 900px);
+  aspect-ratio: 1;
+  border: 1px solid #ff202b22;
+  border-radius: 50%;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 0 70px #ff202b0a, 0 0 80px #ff202b08;
+  z-index: -1;
 }
 
-/* CAR ANIMATION */
-
-.car-track {
-    position: absolute;
-    bottom: 54px;
-    left: -260px;
-    width: 240px;
-    height: 95px;
-    z-index: 5;
-    animation: driveForward 8s linear infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+.ring:before,
+.ring:after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border: 1px dashed #ff202b2c;
+  border-radius: 50%;
+  animation: spin 45s linear infinite;
 }
 
-.car {
-    position: relative;
-    width: 220px;
-    height: 90px;
-    animation: carBounce 0.25s ease-in-out infinite alternate;
+.ring:after {
+  inset: 20%;
+  animation: spinReverse 35s linear infinite;
+  border-style: solid;
 }
 
-/* Car body */
-
-.car-body {
-    position: absolute;
-    bottom: 12px;
-    left: 5px;
-    width: 210px;
-    height: 43px;
-    background: linear-gradient(180deg, #ff3333, #a00000);
-    border: 2px solid #ff5b5b;
-    border-radius: 45px 55px 13px 15px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.25);
+.side-note {
+  position: absolute;
+  bottom: 35px;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: #8b7779;
+  text-transform: uppercase;
 }
 
-/* Cabin facing right */
-
-.car-cabin {
-    position: absolute;
-    left: 66px;
-    bottom: 50px;
-    width: 100px;
-    height: 35px;
-    background: #ed1717;
-    border: 2px solid #ff5b5b;
-    border-radius: 45px 55px 0 0;
-    clip-path: polygon(18% 0, 78% 0, 100% 100%, 0 100%);
+.side-note.left {
+  left: 5vw;
 }
 
-.car-window {
-    position: absolute;
-    left: 85px;
-    bottom: 57px;
-    width: 65px;
-    height: 22px;
-    background: linear-gradient(135deg, #242424, #777);
-    border: 1px solid #aaa;
-    clip-path: polygon(20% 0, 78% 0, 100% 100%, 0 100%);
+.side-note.right {
+  right: 5vw;
 }
 
-/* Headlights face RIGHT */
-
-.headlight {
-    position: absolute;
-    right: -1px;
-    bottom: 28px;
-    width: 13px;
-    height: 10px;
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 12px 0 18px 6px rgba(255, 255, 200, 0.45);
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: .3em;
+  color: #fff9;
+  text-transform: uppercase;
 }
 
-.taillight {
-    position: absolute;
-    left: 5px;
-    bottom: 28px;
-    width: 8px;
-    height: 12px;
-    background: #ff2020;
-    box-shadow: -5px 0 15px var(--red);
+.scroll-hint:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 30px;
+  background: var(--red);
+  margin: 12px auto 0;
+  animation: scrollLine 1.5s infinite;
 }
 
-.wheel {
-    position: absolute;
-    bottom: 0;
-    width: 43px;
-    height: 43px;
-    background: #080808;
-    border: 5px solid #777;
-    border-radius: 50%;
-    animation: wheelSpin 0.35s linear infinite;
+/* CONTENT SECTIONS */
+
+.section {
+  padding: 120px 8vw;
+  position: relative;
+  border-top: 1px solid #ffffff0b;
 }
 
-.wheel::after {
-    content: "";
-    position: absolute;
-    width: 13px;
-    height: 13px;
-    background: var(--red);
-    border-radius: 50%;
-    top: 10px;
-    left: 10px;
+.section:nth-child(even) {
+  background: linear-gradient(135deg, #090203, #030303 65%);
 }
 
-.wheel.front {
-    right: 25px;
+.kicker {
+  font-size: 10px;
+  letter-spacing: .35em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-.wheel.back {
-    left: 30px;
+.title {
+  font-size: clamp(34px, 6vw, 76px);
+  line-height: .95;
+  letter-spacing: -.055em;
+  font-weight: 850;
+  max-width: 900px;
 }
 
-@keyframes driveForward {
-    0% {
-        left: -260px;
-        transform: translateX(0);
-    }
-    100% {
-        left: calc(100% + 260px);
-        transform: translateX(0);
-    }
+.intro {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 650px;
+  margin-top: 25px;
+  font-size: 14px;
 }
 
-@keyframes wheelSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes carBounce {
-    from { translate: 0 0; }
-    to { translate: 0 -2px; }
-}
-
-/* SECTIONS */
-
-section.content-section {
-    padding: 100px 7%;
-    background: var(--black);
-}
-
-.section-label {
-    color: var(--red);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 12px;
-    margin-bottom: 15px;
-}
-
-.section-title {
-    font-size: clamp(32px, 5vw, 55px);
-    font-weight: 900;
-    margin-bottom: 25px;
-}
-
-.section-title span {
-    color: var(--red);
-}
-
-.section-description {
-    max-width: 750px;
-    color: var(--grey);
-    line-height: 1.9;
-    font-size: 16px;
-}
-
-.red-line {
-    width: 70px;
-    height: 4px;
-    background: var(--red);
-    margin: 25px 0;
-}
-
-/* CARDS */
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 22px;
-    margin-top: 45px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 48px;
 }
 
 .card {
-    background: linear-gradient(145deg, #151515, #080808);
-    border: 1px solid #292929;
-    padding: 30px;
-    min-height: 210px;
-    transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+  position: relative;
+  min-height: 230px;
+  padding: 28px;
+  background: linear-gradient(145deg, #190509, #070506);
+  border: 1px solid #ff202b28;
+  overflow: hidden;
+  transition: transform .35s, border-color .35s;
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -90px;
+  top: -100px;
+  background: #ff202b18;
+  border-radius: 50%;
+  filter: blur(10px);
+  transition: .35s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: var(--red);
-    box-shadow: 0 10px 35px rgba(255, 0, 0, 0.1);
+  transform: translateY(-7px);
+  border-color: #ff202b99;
 }
 
-.card-number {
-    color: var(--red);
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+.card:hover:before {
+  background: #ff202b35;
+}
+
+.num {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--red);
+  margin-bottom: 28px;
 }
 
 .card h3 {
-    font-size: 21px;
-    margin-bottom: 15px;
+  font-size: 20px;
+  margin-bottom: 12px;
 }
 
 .card p {
-    color: var(--grey);
-    line-height: 1.7;
-    font-size: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
-/* EVENTS BANNER */
-
-.event-banner {
-    margin-top: 35px;
-    padding: 40px;
-    border-left: 4px solid var(--red);
-    background: linear-gradient(90deg, #250000, #101010);
+.event-feature {
+  margin-top: 40px;
+  padding: 35px;
+  border-left: 2px solid var(--red);
+  background: linear-gradient(90deg, #30000870, transparent);
 }
 
-.event-banner h3 {
-    font-size: 27px;
-    margin-bottom: 15px;
+.event-feature h3 {
+  font-size: clamp(22px, 3vw, 36px);
+  margin-bottom: 12px;
 }
 
-.event-banner p {
-    color: var(--grey);
-    line-height: 1.8;
+.event-feature p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
 }
 
-/* JOIN */
-
-.join-section {
-    text-align: center;
-    background:
-        radial-gradient(ellipse at center, #350000, #050505 70%) !important;
+.join {
+  text-align: center;
+  background: radial-gradient(ellipse at center, #250006, #030303 65%);
 }
 
-.join-section .section-description {
-    margin: auto;
+.join .title,
+.join .intro {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.join-section .btn {
-    margin-top: 30px;
+.join .button {
+  margin-top: 28px;
 }
 
-/* FOOTER */
+/* ANIMATED CAR AND ROAD */
 
-footer {
-    padding: 30px 7%;
-    border-top: 1px solid #252525;
-    background: #050505;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    color: #888;
-    font-size: 12px;
+.car-scene {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(#030303, #0c0c0c);
+  border-top: 1px solid #ffffff0d;
 }
 
-footer span {
-    color: var(--red);
+.road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  background: linear-gradient(#161616, #090909);
+  border-top: 1px solid #333;
 }
 
-/* REVEAL ANIMATION */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.8s, transform 0.8s;
+.road:after {
+  content: "";
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  border-top: 3px dashed #777;
+  animation: road .45s linear infinite;
 }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+.car-track {
+  position: absolute;
+  left: -300px;
+  bottom: 38px;
+  width: 260px;
+  height: 105px;
+  animation: drive 8s linear infinite;
 }
 
-/* MOBILE */
-
-@media (max-width: 760px) {
-    nav {
-        padding: 15px 5%;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .logo {
-        font-size: 17px;
-    }
-
-    .nav-links {
-        width: 100%;
-        order: 3;
-        gap: 16px;
-        overflow-x: auto;
-        padding-bottom: 5px;
-    }
-
-    .nav-links a {
-        font-size: 11px;
-        white-space: nowrap;
-    }
-
-    #soundButton {
-        font-size: 11px;
-        padding: 8px;
-    }
-
-    .hero {
-        padding: 155px 6% 0;
-        min-height: 100vh;
-    }
-
-    .hero h1 {
-        letter-spacing: -1px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    section.content-section {
-        padding: 75px 6%;
-    }
-
-    .car-track {
-        animation-duration: 6s;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.car {
+  position: absolute;
+  inset: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        scroll-behavior: auto !important;
-    }
-
-    .car-track,
-    .wheel,
-    .car {
-        animation-play-state: paused !important;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAVIGATION -->
-
-<nav>
-    <a href="#home" class="logo">AWS <span>FUTUREVERSE</span></a>
-
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#tracks">Tracks</a>
-        <a href="#events">Events</a>
-        <a href="#projects">Projects</a>
-        <a href="#join">Join</a>
-    </div>
-
-    <button id="soundButton" type="button" aria-pressed="false">
-        🔇 SOUND OFF
-    </button>
-</nav>
-
-<!-- HERO -->
-
-<header class="hero" id="home">
-    <div class="hero-content">
-        <div class="tag">MVJ COLLEGE OF ENGINEERING</div>
-
-        <h1>
-            AWS<br>
-            <span>FUTUREVERSE</span>
-        </h1>
-
-        <p>
-            Innovate. Build. Deploy. Repeat.<br>
-            Explore cloud computing, artificial intelligence,
-            automation and next-generation technology with
-            the AWS FUTUREVERSE community.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#about" class="btn">EXPLORE FUTUREVERSE ↗</a>
-            <a href="#join" class="btn btn-outline">JOIN THE COMMUNITY</a>
-        </div>
-    </div>
-
-    <!-- ROAD -->
-
-    <div class="road">
-        <div class="car-track" aria-label="Animated car moving forward">
-            <div class="car">
-                <div class="car-cabin"></div>
-                <div class="car-window"></div>
-
-                <div class="car-body"></div>
-
-                <div class="headlight"></div>
-                <div class="taillight"></div>
-
-                <div class="wheel back"></div>
-                <div class="wheel front"></div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- ABOUT -->
-
-<section class="content-section reveal" id="about">
-    <div class="section-label">01 / ABOUT US</div>
-
-    <h2 class="section-title">
-        Building the <span>Future</span>
-    </h2>
-
-    <div class="red-line"></div>
-
-    <p class="section-description">
-        AWS FUTUREVERSE is a technology-focused community concept
-        for students who want to explore cloud computing, develop
-        practical skills, collaborate on innovative ideas and
-        prepare for the future of technology.
-
-        <br><br>
-
-        Our goal is to learn by building, experiment with new
-        technologies and turn ideas into real-world projects.
-    </p>
-</section>
-
-<!-- TRACKS -->
-
-<section class="content-section reveal" id="tracks">
-    <div class="section-label">02 / LEARNING PATHS</div>
-
-    <h2 class="section-title">
-        Explore the <span>Tracks</span>
-    </h2>
-
-    <p class="section-description">
-        Discover the technologies shaping tomorrow.
-    </p>
-
-    <div class="card-grid">
-        <article class="card">
-            <div class="card-number">TRACK_01</div>
-            <h3>☁️ Cloud Computing</h3>
-            <p>
-                Explore cloud infrastructure, deployment,
-                storage, networking and scalable applications.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">TRACK_02</div>
-            <h3>🤖 Artificial Intelligence</h3>
-            <p>
-                Learn about AI, machine learning, automation
-                and intelligent technology solutions.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">TRACK_03</div>
-            <h3>💻 Web Development</h3>
-            <p>
-                Create websites and applications using modern
-                development tools and technologies.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">TRACK_04</div>
-            <h3>🔐 Cybersecurity</h3>
-            <p>
-                Understand digital security, safe computing,
-                privacy and fundamental security practices.
-            </p>
-        </article>
-    </div>
-</section>
-
-<!-- EVENTS -->
-
-<section class="content-section reveal" id="events">
-    <div class="section-label">03 / EXPERIENCES</div>
-
-    <h2 class="section-title">
-        Learn Beyond the <span>Classroom</span>
-    </h2>
-
-    <div class="card-grid">
-        <article class="card">
-            <div class="card-number">EVENT_01</div>
-            <h3>Technical Workshops</h3>
-            <p>
-                Build practical skills through hands-on learning
-                and guided technical sessions.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">EVENT_02</div>
-            <h3>Hackathons</h3>
-            <p>
-                Collaborate with other students to solve problems
-                and turn creative ideas into prototypes.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">EVENT_03</div>
-            <h3>Tech Talks</h3>
-            <p>
-                Explore emerging technologies and exchange
-                knowledge with the tech community.
-            </p>
-        </article>
-    </div>
-
-    <div class="event-banner">
-        <h3>Ideas. Innovation. Impact.</h3>
-        <p>
-            Every great project starts with curiosity.
-            Learn something new, work with a team and create
-            something that matters.
-        </p>
-    </div>
-</section>
-
-<!-- PROJECTS -->
-
-<section class="content-section reveal" id="projects">
-    <div class="section-label">04 / INNOVATION LAB</div>
-
-    <h2 class="section-title">
-        From Ideas to <span>Reality</span>
-    </h2>
-
-    <p class="section-description">
-        Projects are an opportunity to experiment, collaborate
-        and apply technical concepts to practical challenges.
-    </p>
-
-    <div class="card-grid">
-        <article class="card">
-            <div class="card-number">PROJECT_01</div>
-            <h3>Cloud Applications</h3>
-            <p>
-                Develop and deploy applications using cloud
-                technologies and modern development practices.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">PROJECT_02</div>
-            <h3>AI Experiments</h3>
-            <p>
-                Explore intelligent applications and experiment
-                with machine learning concepts.
-            </p>
-        </article>
-
-        <article class="card">
-            <div class="card-number">PROJECT_03</div>
-            <h3>Student Innovation</h3>
-            <p>
-                Turn student ideas into prototypes through
-                teamwork, experimentation and iteration.
-            </p>
-        </article>
-    </div>
-</section>
-
-<!-- JOIN -->
-
-<section class="content-section join-section reveal" id="join">
-    <div class="section-label">05 / YOUR NEXT CHAPTER</div>
-
-    <h2 class="section-title">
-        Ready to Enter the <span>Future?</span>
-    </h2>
-
-    <p class="section-description">
-        Bring your curiosity, share your ideas and start
-        exploring the world of technology with AWS FUTUREVERSE.
-    </p>
-
-    <!-- Replace # with your official registration or community link -->
-    <a href="#" class="btn" id="joinButton">
-        JOIN THE MOVEMENT ↗
-    </a>
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-    <p>© 2026 <span>AWS FUTUREVERSE</span> | MVJCE</p>
-    <p>BUILT FOR THE FUTURE. POWERED BY INNOVATION.</p>
-</footer>
-
-<script>
-/* SECTION REVEAL ANIMATION */
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.12
-});
-
-document.querySelectorAll(".reveal").forEach((section) => {
-    revealObserver.observe(section);
-});
-
-
-/* CAR ENGINE SOUND
-   Generated using Web Audio API.
-   Audio starts only after the visitor clicks the sound button.
-*/
-
-const soundButton = document.getElementById("soundButton");
-
-let audioContext = null;
-let engineOscillator = null;
-let engineGain = null;
-let engineFilter = null;
-let engineRunning = false;
-let engineLfo = null;
-let engineLfoGain = null;
-
-async function startEngine() {
-    const AudioContextClass =
-        window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContextClass) {
-        soundButton.textContent = "🔇 AUDIO UNSUPPORTED";
-        return;
-    }
-
-    try {
-        if (!audioContext) {
-            audioContext = new AudioContextClass();
-        }
-
-        await audioContext.resume();
-
-        engineOscillator = audioContext.createOscillator();
-        engineFilter = audioContext.createBiquadFilter();
-        engineGain = audioContext.createGain();
-
-        engineLfo = audioContext.createOscillator();
-        engineLfoGain = audioContext.createGain();
-
-        // Deep engine-like sound
-        engineOscillator.type = "sawtooth";
-        engineOscillator.frequency.setValueAtTime(
-            65,
-            audioContext.currentTime
-        );
-
-        // Smooth the harsh high frequencies
-        engineFilter.type = "lowpass";
-        engineFilter.frequency.value = 180;
-        engineFilter.Q.value = 1;
-
-        // Keep the volume low
-        engineGain.gain.setValueAtTime(
-            0.0001,
-            audioContext.currentTime
-        );
-
-        engineGain.gain.linearRampToValueAtTime(
-            0.035,
-            audioContext.currentTime + 0.5
-        );
-
-        // Subtle engine vibration
-        engineLfo.type = "sine";
-        engineLfo.frequency.value = 7;
-        engineLfoGain.gain.value = 3;
-
-        engineLfo.connect(engineLfoGain);
-        engineLfoGain.connect(engineOscillator.frequency);
-
-        engineOscillator.connect(engineFilter);
-        engineFilter.connect(engineGain);
-        engineGain.connect(audioContext.destination);
-
-        engineOscillator.start();
-        engineLfo.start();
-
-        engineRunning = true;
-
-        soundButton.textContent = "🔊 SOUND ON";
-        soundButton.setAttribute("aria-pressed", "true");
-
-    } catch (error) {
-        console.error("Unable to start engine sound:", error);
-        soundButton.textContent = "🔇 SOUND OFF";
-    }
-}
-
-function stopEngine() {
-    if (!audioContext || !engineRunning) {
-        return;
-    }
-
-    const now = audioContext.currentTime;
-
-    engineGain.gain.cancelScheduledValues(now);
-    engineGain.gain.setTargetAtTime(0.0001, now, 0.08);
-
-    const oldOscillator = engineOscillator;
-    const oldLfo = engineLfo;
-
-    engineRunning = false;
-
-    soundButton.textContent = "🔇 SOUND OFF";
-    soundButton.setAttribute("aria-pressed", "false");
-
-    setTimeout(() => {
-        try {
-            oldOscillator.stop();
-            oldLfo.stop();
-        } catch (error) {
-            // Oscillator may already have stopped.
-        }
-
-        oldOscillator.disconnect();
-        oldLfo.disconnect();
-    }, 400);
-}
-
-soundButton.addEventListener("click", async () => {
-    if (engineRunning) {
-        stopEngine();
-    } else {
-        await startEngine();
-    }
-});
-
-
-/* PAUSE CAR ANIMATION WHEN TAB IS HIDDEN */
-
-document.addEventListener("visibilitychange", () => {
-    const car = document.querySelector(".car-track");
-
-    if (document.hidden) {
-        car.style.animationPlayState = "paused";
-
-        if (engineRunning) {
-            stopEngine();
-        }
-    } else {
-        car.style.animationPlayState = "running";
-    }
-});
-
-
-/* JOIN BUTTON
-   Replace the placeholder link with your actual registration URL.
-*/
-
-document.getElementById("joinButton").addEventListener("click", (event) => {
-    const link = event.currentTarget.getAttribute("href");
-
-    if (link === "#") {
-        event.preventDefault();
-        alert("Add your official AWS FUTUREVERSE registration link here!");
-    }
-});
-</script>
-
-</body>
-</html>
-```
+.bodycar {
+  position: absolute;
+  left: 12px;
+  bottom: 16px;
+  width: 225px;
+  height: 44px;
+  border-radius: 70px 45px 15px

@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AWS FUTUREVERSE | MVJCE</title>
-
 <style>
 :root {
   --bg: #080611;
@@ -13,26 +12,15 @@
   --text: #f7f2ff;
   --muted: #b9aecb;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
   font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
 /* CINEMATIC INTRO */
 #intro {
@@ -47,20 +35,19 @@ a {
   overflow: hidden;
   transition: opacity 1s, visibility 1s;
 }
-
 #intro.hide {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-
 #particles {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
-
 .spotlight {
   position: absolute;
   top: -30%;
@@ -71,51 +58,31 @@ a {
   mix-blend-mode: screen;
   animation: sweep 5s ease-in-out infinite alternate;
 }
-
 .spotlight.one {
   left: 5%;
   background: linear-gradient(transparent, #a855f755, transparent);
   transform: rotate(30deg);
 }
-
 .spotlight.two {
   right: 5%;
   background: linear-gradient(transparent, #ff7a1844, transparent);
   transform: rotate(-30deg);
   animation-delay: 1s;
 }
-
 @keyframes sweep {
-  from {
-    transform: translateX(-15%) rotate(25deg);
-    opacity: .2;
-  }
-  to {
-    transform: translateX(20%) rotate(-15deg);
-    opacity: .8;
-  }
+  from { transform: translateX(-15%) rotate(25deg); opacity: .2; }
+  to { transform: translateX(20%) rotate(-15deg); opacity: .8; }
 }
-
 .intro-content {
   position: relative;
   z-index: 2;
   width: 95%;
   animation: appear 1.5s ease forwards;
 }
-
 @keyframes appear {
-  from {
-    opacity: 0;
-    transform: scale(.65);
-    filter: blur(12px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
+  from { opacity: 0; transform: scale(.65); filter: blur(12px); }
+  to { opacity: 1; transform: scale(1); filter: blur(0); }
 }
-
 .intro-kicker {
   color: #d8b4fe;
   letter-spacing: 6px;
@@ -123,7 +90,6 @@ a {
   text-transform: uppercase;
   margin-bottom: 25px;
 }
-
 .logo-orbit {
   width: 160px;
   height: 160px;
@@ -135,7 +101,6 @@ a {
   box-shadow: 0 0 40px #a855f755;
   animation: rotate 12s linear infinite;
 }
-
 .logo-core {
   width: 95px;
   height: 95px;
@@ -146,17 +111,12 @@ a {
   box-shadow: 0 0 35px #a855f788;
   transform: rotate(45deg);
 }
-
 .logo-core span {
   font-size: 40px;
   font-weight: 900;
   transform: rotate(-45deg);
 }
-
-@keyframes rotate {
-  to { transform: rotate(360deg); }
-}
-
+@keyframes rotate { to { transform: rotate(360deg); } }
 .intro-title {
   font-size: clamp(35px, 8vw, 85px);
   font-weight: 1000;
@@ -168,18 +128,13 @@ a {
   -webkit-background-clip: text;
   animation: shine 4s linear infinite;
 }
-
-@keyframes shine {
-  to { background-position: 300% center; }
-}
-
+@keyframes shine { to { background-position: 300% center; } }
 .intro-subtitle {
   color: #e9d5ff;
   letter-spacing: 5px;
   font-size: 13px;
   margin-top: 18px;
 }
-
 .intro-line {
   width: 220px;
   height: 2px;
@@ -188,12 +143,10 @@ a {
   box-shadow: 0 0 20px #a855f7;
   animation: linePulse 2s infinite alternate;
 }
-
 @keyframes linePulse {
   from { width: 100px; opacity: .5; }
   to { width: 300px; opacity: 1; }
 }
-
 .enter-btn {
   margin-top: 28px;
   border: 1px solid #c084fc;
@@ -205,18 +158,16 @@ a {
   letter-spacing: 2px;
   transition: .3s;
 }
-
 .enter-btn:hover {
   background: linear-gradient(90deg, #7e22ce, #f97316);
   box-shadow: 0 0 30px #a855f788;
   transform: translateY(-3px);
 }
-
 .skip {
   position: absolute;
   bottom: 22px;
   right: 22px;
-  z-index: 5;
+  z-index: 20;
   padding: 9px 15px;
   border: 1px solid #ffffff44;
   background: #080611aa;
@@ -225,7 +176,7 @@ a {
   cursor: pointer;
 }
 
-/* WEBSITE NAVIGATION */
+/* NAVIGATION */
 header {
   position: sticky;
   top: 0;
@@ -234,7 +185,6 @@ header {
   backdrop-filter: blur(15px);
   border-bottom: 1px solid #ffffff15;
 }
-
 nav {
   max-width: 1150px;
   margin: auto;
@@ -244,28 +194,12 @@ nav {
   align-items: center;
   gap: 20px;
 }
-
-.brand {
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: #d8b4fe;
-}
-
+.brand { font-weight: 900; letter-spacing: 1px; color: #d8b4fe; }
 nav a:hover { color: #ff9b4a; }
-
-.nav-links {
-  display: flex;
-  gap: 22px;
-  font-size: 14px;
-}
+.nav-links { display: flex; gap: 22px; font-size: 14px; }
 
 section { padding: 90px 22px; }
-
-.container {
-  max-width: 1150px;
-  margin: auto;
-}
-
+.container { max-width: 1150px; margin: auto; }
 .eyebrow {
   color: #ff9b4a;
   letter-spacing: 4px;
@@ -273,26 +207,18 @@ section { padding: 90px 22px; }
   font-size: 12px;
   font-weight: bold;
 }
-
 h2 {
   font-size: clamp(30px, 5vw, 55px);
   margin: 15px 0;
   line-height: 1.1;
 }
-
 .gradient {
   background: linear-gradient(90deg, #c084fc, #ff9b4a);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
 }
-
-.description {
-  color: var(--muted);
-  max-width: 650px;
-  line-height: 1.8;
-}
-
+.description { color: var(--muted); max-width: 650px; line-height: 1.8; }
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -302,11 +228,7 @@ h2 {
   font-weight: bold;
   transition: .3s;
 }
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 35px #a855f744;
-}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 10px 35px #a855f744; }
 
 /* HERO */
 .hero {
@@ -316,24 +238,13 @@ h2 {
   position: relative;
   overflow: hidden;
 }
-
 .hero h1 {
   font-size: clamp(48px, 8vw, 95px);
   line-height: .98;
   letter-spacing: -4px;
 }
-
-.hero .description {
-  margin-top: 25px;
-  font-size: 17px;
-}
-
-.hero-visual {
-  margin-top: 45px;
-  display: flex;
-  justify-content: center;
-}
-
+.hero .description { margin-top: 25px; font-size: 17px; }
+.hero-visual { margin-top: 45px; display: flex; justify-content: center; }
 .hero-orb {
   width: 190px;
   height: 190px;
@@ -347,19 +258,15 @@ h2 {
   box-shadow: 0 0 60px #9333ea44;
   animation: float 4s ease-in-out infinite;
 }
+@keyframes float { 50% { transform: translateY(-15px); } }
 
-@keyframes float {
-  50% { transform: translateY(-15px); }
-}
-
-/* ANIMATED CARDS */
+/* CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 35px;
 }
-
 .card {
   padding: 28px;
   border: 1px solid #ffffff18;
@@ -369,50 +276,26 @@ h2 {
   position: relative;
   overflow: hidden;
 }
-
 .card:hover {
   transform: translateY(-8px);
   border-color: #a855f7;
   box-shadow: 0 15px 40px #9333ea22;
 }
-
-.card h3 {
-  margin-bottom: 12px;
-  font-size: 20px;
-}
-
-.card p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.icon {
-  font-size: 35px;
-  margin-bottom: 20px;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s, transform .8s;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.card h3 { margin-bottom: 12px; font-size: 20px; }
+.card p { color: var(--muted); line-height: 1.7; }
+.icon { font-size: 35px; margin-bottom: 20px; }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s, transform .8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 footer {
   padding: 30px 20px;
   text-align: center;
   border-top: 1px solid #ffffff18;
   color: var(--muted);
 }
-
-/* FUTUREVERSE CAR INTRO — CINEMATIC 3D DEPTH */
+/* FIXED, VISIBLE ANIMATED CAR */
 .car-scene {
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   left: 0;
   right: 0;
   bottom: 7%;
@@ -420,8 +303,8 @@ footer {
   pointer-events: none;
   perspective: 1000px;
   transform-style: preserve-3d;
+  overflow: visible;
 }
-
 .car-scene::before {
   content: "";
   position: absolute;
@@ -434,9 +317,7 @@ footer {
     linear-gradient(180deg, #a855f711, transparent);
   transform: rotateX(68deg) translateZ(-35px);
   transform-origin: top;
-  mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
 }
-
 .car-track-glow {
   position: absolute;
   left: -10%;
@@ -445,50 +326,51 @@ footer {
   height: 3px;
   background: linear-gradient(90deg, transparent, #a855f7, #ff7a18, transparent);
   box-shadow: 0 0 18px #a855f7, 0 0 35px #ff7a1866;
-  transform: perspective(250px) rotateX(28deg) translateZ(-10px);
 }
-
 .future-car {
   position: absolute;
+  display: block;
+  visibility: visible;
   width: clamp(230px, 36vw, 440px);
   height: auto;
-  left: -48%;
+  left: -35%;
   bottom: 12px;
+  z-index: 5;
   transform-style: preserve-3d;
   filter: drop-shadow(0 20px 12px #0009)
           drop-shadow(0 0 18px #a855f7aa)
           drop-shadow(0 0 24px #ff7a1877);
-  animation: carCruise 7.5s cubic-bezier(.55,.02,.42,1) infinite;
+  animation: carCruise 7.5s linear infinite;
+  will-change: left, transform, opacity;
 }
-
 @keyframes carCruise {
   0% {
-    left: -48%;
-    transform: translateY(22px) translateZ(-100px) scale(.58) rotateY(-18deg) rotateX(4deg);
-    opacity: 0;
+    left: -35%;
+    transform: translateY(14px) translateZ(-30px) scale(.72) rotateY(-10deg);
+    opacity: 1;
   }
   12% { opacity: 1; }
-  32% {
-    transform: translateY(0) translateZ(35px) scale(1.05) rotateY(-5deg) rotateX(0);
+  35% {
+    left: 10%;
+    transform: translateY(0) translateZ(25px) scale(.98) rotateY(-4deg);
     opacity: 1;
   }
-  48% {
-    left: 34%;
-    transform: translateY(-4px) translateZ(70px) scale(1.13) rotateY(0) rotateX(0);
+  55% {
+    left: 35%;
+    transform: translateY(-4px) translateZ(45px) scale(1.08) rotateY(0);
     opacity: 1;
   }
-  72% {
-    left: 58%;
-    transform: translateY(-2px) translateZ(15px) scale(.94) rotateY(9deg) rotateX(1deg);
+  78% {
+    left: 63%;
+    transform: translateY(-2px) translateZ(15px) scale(.92) rotateY(6deg);
     opacity: 1;
   }
   100% {
     left: 110%;
-    transform: translateY(12px) translateZ(-120px) scale(.52) rotateY(20deg) rotateX(4deg);
+    transform: translateY(10px) translateZ(-40px) scale(.68) rotateY(12deg);
     opacity: 0;
   }
 }
-
 .car-light {
   position: absolute;
   width: 90px;
@@ -500,15 +382,11 @@ footer {
   opacity: .7;
   animation: headlightPulse 1.4s ease-in-out infinite alternate;
 }
+@keyframes headlightPulse { to { opacity: .25; transform: scaleX(.65); } }
 
-@keyframes headlightPulse {
-  to { opacity: .25; transform: scaleX(.65); }
-}
-
-/* 3D MVJCE PHOTO GALLERY */
+/* 3D CAMPUS PHOTO GALLERY */
 .campus-gallery { overflow: hidden; }
 .gallery-intro { margin-bottom: 38px; }
-
 .photo-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -518,7 +396,6 @@ footer {
   transform-style: preserve-3d;
   margin-top: 42px;
 }
-
 .photo-card {
   position: relative;
   min-height: 290px;
@@ -532,13 +409,11 @@ footer {
   transition: transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s, border-color .55s;
   box-shadow: 0 22px 30px #0008, 0 0 0 1px #a855f722, 12px 14px 0 -8px #5b21b6;
 }
-
 .photo-card:nth-child(2) { --tilt: 5deg; transform: rotateY(5deg) rotateX(-4deg); }
 .photo-card:nth-child(3) { --tilt: -4deg; transform: rotateY(-4deg) rotateX(4deg); }
 .photo-card:nth-child(4) { --tilt: 6deg; transform: rotateY(6deg) rotateX(4deg); }
 .photo-card:nth-child(5) { --tilt: -5deg; transform: rotateY(-5deg) rotateX(-4deg); }
 .photo-card:nth-child(6) { --tilt: 4deg; transform: rotateY(4deg) rotateX(5deg); }
-
 .photo-card::before {
   content: "";
   position: absolute;
@@ -549,7 +424,6 @@ footer {
   transform: translateZ(18px);
   mix-blend-mode: screen;
 }
-
 .photo-card::after {
   content: "";
   position: absolute;
@@ -559,14 +433,12 @@ footer {
   background: linear-gradient(180deg, transparent 25%, #08061122 50%, #080611ee 100%);
   transform: translateZ(8px);
 }
-
 .photo-card:hover {
   transform: translateY(-12px) rotateX(0deg) rotateY(0deg) translateZ(35px) scale(1.035);
   border-color: #ff9b4a;
   box-shadow: 0 35px 55px #000b, 0 0 32px #a855f755, 15px 18px 0 -8px #f97316;
   z-index: 5;
 }
-
 .photo-card img {
   display: block;
   width: 100%;
@@ -577,12 +449,10 @@ footer {
   transition: transform .7s, opacity .7s, filter .7s;
   filter: saturate(1.08) contrast(1.04);
 }
-
 .photo-card:hover img {
   transform: translateZ(28px) scale(1.12);
   opacity: 1;
 }
-
 .photo-caption {
   position: absolute;
   left: 20px;
@@ -592,46 +462,25 @@ footer {
   transform: translateZ(35px);
   text-shadow: 0 3px 12px #000;
 }
-
 .photo-caption span {
   color: #e9d5ff;
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
+.photo-caption h3 { margin-top: 8px; font-size: 23px; }
+.gallery-note { color: var(--muted); font-size: 12px; margin-top: 25px; line-height: 1.6; }
 
-.photo-caption h3 {
-  margin-top: 8px;
-  font-size: 23px;
-}
-
-.gallery-note {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 25px;
-  line-height: 1.6;
-}
-
-/* RESPONSIVE STYLING */
 @media (max-width: 850px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
   .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
   .photo-card { transform: none; }
   .nav-links { gap: 12px; }
+  .car-scene { bottom: 4%; }
 }
-
 @media (max-width: 560px) {
-  nav {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .nav-links {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 12px 18px;
-    font-size: 13px;
-  }
+  nav { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .nav-links { width: 100%; flex-wrap: wrap; gap: 12px 18px; font-size: 13px; }
   section { padding: 65px 18px; }
   .grid, .photo-gallery { grid-template-columns: 1fr; }
   .photo-gallery { gap: 22px; }
@@ -639,19 +488,24 @@ footer {
   .photo-card img { height: 250px; }
   .intro-kicker { letter-spacing: 3px; }
   .intro-subtitle { letter-spacing: 3px; }
-  .future-car { width: 280px; }
-  .car-scene { bottom: 5%; }
+  .future-car { width: 250px; }
+  .car-scene { bottom: 2%; height: 100px; }
+  .intro-content { margin-bottom: 90px; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+  .future-car, .car-light { animation: none !important; }
+  .future-car {
+    left: calc(50% - 125px);
+    width: 250px;
+    opacity: 1;
+    transform: translateZ(40px);
   }
-  .reveal { opacity: 1; transform: none; }
-  .photo-card { transform: none !important; }
+  .photo-card, .photo-card img { transition: none !important; }
+  .photo-card, .photo-card:nth-child(n) { transform: none !important; }
+}
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .nav-links { gap: 10px; font-size: 12px; }
 }
 </style>
 </head>
@@ -659,10 +513,10 @@ footer {
 <!-- CINEMATIC INTRO -->
 <div id="intro">
   <canvas id="particles"></canvas>
-
   <div class="spotlight one"></div>
   <div class="spotlight two"></div>
 
+  <!-- ANIMATED CAR -->
   <div class="car-scene" aria-hidden="true">
     <div class="car-track-glow"></div>
     <div class="car-light"></div>
@@ -803,12 +657,14 @@ footer {
 <section id="about">
   <div class="container reveal">
     <p class="eyebrow">ABOUT THE COMMUNITY</p>
+
     <h2>A Launchpad for <span class="gradient">Curious Minds.</span></h2>
 
     <p class="description">
-      AWS FUTUREVERSE is a space for students to explore technology,
-      learn collaboratively, experiment with ideas and develop practical
-      skills for the future.
+      AWS FUTUREVERSE brings students together to explore emerging
+      technologies, exchange ideas and build practical skills.
+      Through collaborative learning, workshops and projects,
+      we aim to turn curiosity into innovation.
     </p>
 
     <div class="grid">
@@ -837,18 +693,20 @@ footer {
 <section id="campus" class="campus-gallery">
   <div class="container reveal">
     <p class="eyebrow">A GLIMPSE OF OUR CAMPUS</p>
+
     <h2>Explore <span class="gradient">MVJCE in 3D.</span></h2>
 
     <p class="description gallery-intro">
-      From campus spaces to student experiences, discover the place where
-      future-ready ideas take shape.
+      From campus spaces to student experiences, discover the place
+      where future-ready ideas take shape.
     </p>
 
     <div class="photo-gallery">
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2025/08/central.webp"
-             alt="Central Library building at MVJ College of Engineering"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2025/08/central.webp"
+          alt="Central Library building at MVJ College of Engineering"
+          loading="lazy">
         <div class="photo-caption">
           <span>Campus spaces</span>
           <h3>Central Library</h3>
@@ -856,9 +714,10 @@ footer {
       </article>
 
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-001.webp"
-             alt="Book shelves inside the MVJCE library"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-001.webp"
+          alt="Book shelves inside the MVJCE library"
+          loading="lazy">
         <div class="photo-caption">
           <span>Learn & discover</span>
           <h3>Knowledge Hub</h3>
@@ -866,9 +725,10 @@ footer {
       </article>
 
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/001.webp"
-             alt="Students gathered for an event at MVJ College of Engineering"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2024/04/001.webp"
+          alt="Students gathered for an event at MVJ College of Engineering"
+          loading="lazy">
         <div class="photo-caption">
           <span>Student life</span>
           <h3>Ideas Together</h3>
@@ -876,9 +736,10 @@ footer {
       </article>
 
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/003.webp"
-             alt="MVJCE student go-kart team in action"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2024/04/003.webp"
+          alt="MVJCE student go-kart team in action"
+          loading="lazy">
         <div class="photo-caption">
           <span>Build & innovate</span>
           <h3>Engineering Spirit</h3>
@@ -886,9 +747,10 @@ footer {
       </article>
 
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-003.webp"
-             alt="Reading and study area in the MVJCE library"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-003.webp"
+          alt="Reading and study area in the MVJCE library"
+          loading="lazy">
         <div class="photo-caption">
           <span>Find your focus</span>
           <h3>Study Spaces</h3>
@@ -896,9 +758,10 @@ footer {
       </article>
 
       <article class="photo-card">
-        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/002.webp"
-             alt="Student performance during an MVJCE campus event"
-             loading="lazy">
+        <img
+          src="https://mvjce.edu.in/wp-content/uploads/2024/04/002.webp"
+          alt="Student performance during an MVJCE campus event"
+          loading="lazy">
         <div class="photo-caption">
           <span>Campus culture</span>
           <h3>Beyond Classrooms</h3>
@@ -917,6 +780,7 @@ footer {
 <section id="tracks">
   <div class="container reveal">
     <p class="eyebrow">EXPLORE YOUR PATH</p>
+
     <h2>Choose Your <span class="gradient">Technology Track.</span></h2>
 
     <div class="grid">
@@ -963,6 +827,7 @@ footer {
 <section id="events">
   <div class="container reveal">
     <p class="eyebrow">LEARN · EXPLORE · CREATE</p>
+
     <h2>Experiences That <span class="gradient">Spark Ideas.</span></h2>
 
     <div class="grid">
@@ -991,6 +856,7 @@ footer {
 <section id="projects">
   <div class="container reveal">
     <p class="eyebrow">IDEAS INTO IMPACT</p>
+
     <h2>Ideas Become <span class="gradient">Innovation.</span></h2>
 
     <div class="grid">
@@ -1039,8 +905,9 @@ footer {
   <p>✦ AWS FUTUREVERSE · MVJCE</p>
   <p>Imagine. Build. Transform.</p>
 </footer>
+
 <script>
-// CINEMATIC INTRO CONTROLS
+// INTRO CONTROLS
 const intro = document.getElementById("intro");
 
 function closeIntro() {
@@ -1054,7 +921,7 @@ document.getElementById("enterBtn")
 document.getElementById("skipBtn")
   .addEventListener("click", closeIntro);
 
-// Automatically close intro after 9 seconds
+// Close intro automatically after 9 seconds
 setTimeout(closeIntro, 9000);
 
 // PARTICLE ANIMATION
@@ -1095,37 +962,25 @@ function animateParticles() {
     if (p.y > height) p.y = 0;
 
     ctx.beginPath();
-
-    ctx.fillStyle = p.orange
-      ? "#ff8a3d"
-      : "#c084fc";
-
+    ctx.fillStyle = p.orange ? "#ff8a3d" : "#c084fc";
     ctx.shadowBlur = 15;
     ctx.shadowColor = ctx.fillStyle;
-
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
     ctx.fill();
   });
 
   ctx.shadowBlur = 0;
 
-  // Connect nearby particles with glowing lines
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const a = particles[i];
       const b = particles[j];
 
-      const distance = Math.hypot(
-        a.x - b.x,
-        a.y - b.y
-      );
+      const distance = Math.hypot(a.x - b.x, a.y - b.y);
 
       if (distance < 100) {
         ctx.beginPath();
-
-        ctx.strokeStyle =
-          `rgba(168,85,247,${1 - distance / 100})`;
-
+        ctx.strokeStyle = `rgba(168,85,247,${1 - distance / 100})`;
         ctx.globalAlpha = 0.18;
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -1140,7 +995,6 @@ function animateParticles() {
 
 resizeCanvas();
 animateParticles();
-
 window.addEventListener("resize", resizeCanvas);
 
 // 3D CAMPUS PHOTO INTERACTION

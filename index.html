@@ -20,9 +20,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -37,7 +35,6 @@ a {
 }
 
 /* CINEMATIC INTRO */
-
 #intro {
   position: fixed;
   inset: 0;
@@ -77,21 +74,13 @@ a {
 
 .spotlight.one {
   left: 5%;
-  background: linear-gradient(
-    transparent,
-    #a855f755,
-    transparent
-  );
+  background: linear-gradient(transparent, #a855f755, transparent);
   transform: rotate(30deg);
 }
 
 .spotlight.two {
   right: 5%;
-  background: linear-gradient(
-    transparent,
-    #ff7a1844,
-    transparent
-  );
+  background: linear-gradient(transparent, #ff7a1844, transparent);
   transform: rotate(-30deg);
   animation-delay: 1s;
 }
@@ -172,13 +161,7 @@ a {
   font-size: clamp(35px, 8vw, 85px);
   font-weight: 1000;
   letter-spacing: -3px;
-  background: linear-gradient(
-    100deg,
-    #fff,
-    #c084fc,
-    #ff7a18,
-    #fff
-  );
+  background: linear-gradient(100deg, #fff, #c084fc, #ff7a18, #fff);
   background-size: 300%;
   color: transparent;
   background-clip: text;
@@ -201,13 +184,7 @@ a {
   width: 220px;
   height: 2px;
   margin: 25px auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #a855f7,
-    #ff7a18,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, #a855f7, #ff7a18, transparent);
   box-shadow: 0 0 20px #a855f7;
   animation: linePulse 2s infinite alternate;
 }
@@ -249,7 +226,6 @@ a {
 }
 
 /* WEBSITE NAVIGATION */
-
 header {
   position: sticky;
   top: 0;
@@ -275,9 +251,7 @@ nav {
   color: #d8b4fe;
 }
 
-nav a:hover {
-  color: #ff9b4a;
-}
+nav a:hover { color: #ff9b4a; }
 
 .nav-links {
   display: flex;
@@ -285,9 +259,7 @@ nav a:hover {
   font-size: 14px;
 }
 
-section {
-  padding: 90px 22px;
-}
+section { padding: 90px 22px; }
 
 .container {
   max-width: 1150px;
@@ -337,7 +309,6 @@ h2 {
 }
 
 /* HERO */
-
 .hero {
   min-height: 85vh;
   display: flex;
@@ -382,7 +353,6 @@ h2 {
 }
 
 /* ANIMATED CARDS */
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -439,30 +409,249 @@ footer {
   color: var(--muted);
 }
 
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+/* FUTUREVERSE CAR INTRO — CINEMATIC 3D DEPTH */
+.car-scene {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 7%;
+  height: clamp(120px, 23vh, 210px);
+  pointer-events: none;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
 
+.car-scene::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -22px;
+  height: 95px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 55px, #a855f722 56px 58px),
+    linear-gradient(180deg, #a855f711, transparent);
+  transform: rotateX(68deg) translateZ(-35px);
+  transform-origin: top;
+  mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+}
+
+.car-track-glow {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 18px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #a855f7, #ff7a18, transparent);
+  box-shadow: 0 0 18px #a855f7, 0 0 35px #ff7a1866;
+  transform: perspective(250px) rotateX(28deg) translateZ(-10px);
+}
+
+.future-car {
+  position: absolute;
+  width: clamp(230px, 36vw, 440px);
+  height: auto;
+  left: -48%;
+  bottom: 12px;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 20px 12px #0009)
+          drop-shadow(0 0 18px #a855f7aa)
+          drop-shadow(0 0 24px #ff7a1877);
+  animation: carCruise 7.5s cubic-bezier(.55,.02,.42,1) infinite;
+}
+
+@keyframes carCruise {
+  0% {
+    left: -48%;
+    transform: translateY(22px) translateZ(-100px) scale(.58) rotateY(-18deg) rotateX(4deg);
+    opacity: 0;
+  }
+  12% { opacity: 1; }
+  32% {
+    transform: translateY(0) translateZ(35px) scale(1.05) rotateY(-5deg) rotateX(0);
+    opacity: 1;
+  }
+  48% {
+    left: 34%;
+    transform: translateY(-4px) translateZ(70px) scale(1.13) rotateY(0) rotateX(0);
+    opacity: 1;
+  }
+  72% {
+    left: 58%;
+    transform: translateY(-2px) translateZ(15px) scale(.94) rotateY(9deg) rotateX(1deg);
+    opacity: 1;
+  }
+  100% {
+    left: 110%;
+    transform: translateY(12px) translateZ(-120px) scale(.52) rotateY(20deg) rotateX(4deg);
+    opacity: 0;
+  }
+}
+
+.car-light {
+  position: absolute;
+  width: 90px;
+  height: 22px;
+  right: 8%;
+  top: 48%;
+  background: #ff9b4a;
+  filter: blur(24px);
+  opacity: .7;
+  animation: headlightPulse 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes headlightPulse {
+  to { opacity: .25; transform: scaleX(.65); }
+}
+
+/* 3D MVJCE PHOTO GALLERY */
+.campus-gallery { overflow: hidden; }
+.gallery-intro { margin-bottom: 38px; }
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px;
+  perspective: 1500px;
+  perspective-origin: 50% 40%;
+  transform-style: preserve-3d;
+  margin-top: 42px;
+}
+
+.photo-card {
+  position: relative;
+  min-height: 290px;
+  border: 1px solid #c084fc77;
+  border-radius: 22px;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(145deg, #28143e, #110b1d 65%);
+  transform-style: preserve-3d;
+  transform: rotateY(var(--tilt, -7deg)) rotateX(5deg) translateZ(0);
+  transition: transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s, border-color .55s;
+  box-shadow: 0 22px 30px #0008, 0 0 0 1px #a855f722, 12px 14px 0 -8px #5b21b6;
+}
+
+.photo-card:nth-child(2) { --tilt: 5deg; transform: rotateY(5deg) rotateX(-4deg); }
+.photo-card:nth-child(3) { --tilt: -4deg; transform: rotateY(-4deg) rotateX(4deg); }
+.photo-card:nth-child(4) { --tilt: 6deg; transform: rotateY(6deg) rotateX(4deg); }
+.photo-card:nth-child(5) { --tilt: -5deg; transform: rotateY(-5deg) rotateX(-4deg); }
+.photo-card:nth-child(6) { --tilt: 4deg; transform: rotateY(4deg) rotateX(5deg); }
+
+.photo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(125deg, #ffffff22, transparent 25%, transparent 65%, #a855f733);
+  transform: translateZ(18px);
+  mix-blend-mode: screen;
+}
+
+.photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 25%, #08061122 50%, #080611ee 100%);
+  transform: translateZ(8px);
+}
+
+.photo-card:hover {
+  transform: translateY(-12px) rotateX(0deg) rotateY(0deg) translateZ(35px) scale(1.035);
+  border-color: #ff9b4a;
+  box-shadow: 0 35px 55px #000b, 0 0 32px #a855f755, 15px 18px 0 -8px #f97316;
+  z-index: 5;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  opacity: .88;
+  transform: translateZ(12px) scale(1.03);
+  transition: transform .7s, opacity .7s, filter .7s;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.photo-card:hover img {
+  transform: translateZ(28px) scale(1.12);
+  opacity: 1;
+}
+
+.photo-caption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+  transform: translateZ(35px);
+  text-shadow: 0 3px 12px #000;
+}
+
+.photo-caption span {
+  color: #e9d5ff;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.photo-caption h3 {
+  margin-top: 8px;
+  font-size: 23px;
+}
+
+.gallery-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 25px;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE STYLING */
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .photo-card { transform: none; }
+  .nav-links { gap: 12px; }
+}
+
+@media (max-width: 560px) {
+  nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
   .nav-links {
-    gap: 10px;
-    font-size: 12px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    font-size: 13px;
   }
-
-  .intro-kicker {
-    letter-spacing: 3px;
-  }
-
-  .intro-subtitle {
-    letter-spacing: 2px;
-  }
+  section { padding: 65px 18px; }
+  .grid, .photo-gallery { grid-template-columns: 1fr; }
+  .photo-gallery { gap: 22px; }
+  .photo-card { min-height: 250px; }
+  .photo-card img { height: 250px; }
+  .intro-kicker { letter-spacing: 3px; }
+  .intro-subtitle { letter-spacing: 3px; }
+  .future-car { width: 280px; }
+  .car-scene { bottom: 5%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
+    scroll-behavior: auto !important;
     animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+  .reveal { opacity: 1; transform: none; }
+  .photo-card { transform: none !important; }
 }
 </style>
 </head>
@@ -474,6 +663,78 @@ footer {
   <div class="spotlight one"></div>
   <div class="spotlight two"></div>
 
+  <div class="car-scene" aria-hidden="true">
+    <div class="car-track-glow"></div>
+    <div class="car-light"></div>
+
+    <svg class="future-car" viewBox="0 0 520 190"
+         role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="carBody" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f5d0fe"/>
+          <stop offset=".28" stop-color="#a855f7"/>
+          <stop offset=".7" stop-color="#5420a4"/>
+          <stop offset="1" stop-color="#ff7a18"/>
+        </linearGradient>
+
+        <linearGradient id="carGlass" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#a5f3fc" stop-opacity=".95"/>
+          <stop offset="1" stop-color="#312e81" stop-opacity=".9"/>
+        </linearGradient>
+
+        <linearGradient id="carUnderGlow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#a855f7" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#c084fc"/>
+          <stop offset="1" stop-color="#ff7a18" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <ellipse cx="265" cy="156" rx="205" ry="15"
+               fill="url(#carUnderGlow)" opacity=".85"/>
+
+      <path d="M55 124 L82 101 Q104 91 151 86 L205 47 Q226 34 270 38 L331 47 Q359 52 384 79 L437 94 Q460 101 472 121 L466 140 L58 140 Z"
+            fill="url(#carBody)" stroke="#e9d5ff" stroke-width="2"/>
+
+      <path d="M166 84 L218 50 Q231 43 263 46 L315 52 Q337 55 356 80 Z"
+            fill="url(#carGlass)" stroke="#f5d0fe" stroke-width="2"/>
+
+      <path d="M226 49 L215 82 L350 82"
+            fill="none" stroke="#e9d5ff" stroke-opacity=".65" stroke-width="2"/>
+
+      <path d="M81 104 L147 96 L170 108 L99 115 Z"
+            fill="#ff7a18" opacity=".8"/>
+
+      <path d="M382 91 L435 104 L451 116 L395 111 Z"
+            fill="#fff7ed"/>
+
+      <path d="M65 124 L105 119 L99 132 L59 133 Z" fill="#f0abfc"/>
+      <path d="M403 122 L466 121 L459 134 L405 134 Z" fill="#ffedd5"/>
+
+      <path d="M115 139 L411 139"
+            stroke="#f0abfc" stroke-width="3" stroke-linecap="round"/>
+
+      <path d="M177 96 L196 96 M210 96 L230 96 M244 96 L264 96"
+            stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
+
+      <circle cx="143" cy="137" r="31" fill="#090713"
+              stroke="#c084fc" stroke-width="4"/>
+      <circle cx="143" cy="137" r="16" fill="#343044"
+              stroke="#f5d0fe" stroke-width="3"/>
+      <circle cx="143" cy="137" r="5" fill="#ff7a18"/>
+
+      <circle cx="387" cy="137" r="31" fill="#090713"
+              stroke="#ff9b4a" stroke-width="4"/>
+      <circle cx="387" cy="137" r="16" fill="#343044"
+              stroke="#f5d0fe" stroke-width="3"/>
+      <circle cx="387" cy="137" r="5" fill="#c084fc"/>
+
+      <path d="M430 106 L485 112"
+            stroke="#fff7ed" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+      <path d="M438 116 L493 125"
+            stroke="#ff9b4a" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+    </svg>
+  </div>
+
   <div class="intro-content">
     <p class="intro-kicker">ENTER A NEW DIMENSION</p>
 
@@ -483,212 +744,293 @@ footer {
 
     <h1 class="intro-title">AWS FUTUREVERSE</h1>
 
-    <p class="intro-subtitle">
-      MVJCE · CLOUD COMPUTING CLUB
-    </p>
-    
+    <p class="intro-subtitle">MVJCE · CLOUD COMPUTING CLUB</p>
+
     <div class="intro-line"></div>
 
     <button class="enter-btn" id="enterBtn">
       ENTER THE FUTURE ↗
     </button>
   </div>
+
   <button class="skip" id="skipBtn">Skip Intro ↗</button>
 </div>
+
 <!-- NAVIGATION -->
 <header>
-<nav>
-  <a class="brand" href="#home">✦ AWS FUTUREVERSE</a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#tracks">Tracks</a>
-    <a href="#events">Events</a>
-    <a href="#projects">Projects</a>
-    <a href="#join">Join Us</a>
-  </div>
-</nav>
+  <nav>
+    <a class="brand" href="#home">✦ AWS FUTUREVERSE</a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#campus">Campus</a>
+      <a href="#tracks">Tracks</a>
+      <a href="#events">Events</a>
+      <a href="#projects">Projects</a>
+      <a href="#join">Join Us</a>
+    </div>
+  </nav>
 </header>
 
 <main>
 
 <!-- HERO -->
 <section class="hero" id="home">
-<div class="container reveal">
-  <p class="eyebrow">MVJCE · CLOUD COMPUTING CLUB</p>
+  <div class="container reveal">
+    <p class="eyebrow">MVJCE · CLOUD COMPUTING CLUB</p>
 
-  <h1>
-    Think Beyond.<br>
-    <span class="gradient">Build The Future.</span>
-  </h1>
+    <h1>
+      Think Beyond.<br>
+      <span class="gradient">Build The Future.</span>
+    </h1>
 
-  <p class="description">
-    Welcome to AWS FUTUREVERSE — a community of curious minds
-    exploring cloud computing, artificial intelligence, cybersecurity
-    and the technologies shaping tomorrow.
-  </p>
+    <p class="description">
+      Welcome to AWS FUTUREVERSE — a community of curious minds
+      exploring cloud computing, artificial intelligence, cybersecurity
+      and the technologies shaping tomorrow.
+    </p>
 
-  <a href="#tracks" class="btn">Explore Our Tracks ↗</a>
-  <a href="#about" class="btn">Discover the Club</a>
+    <a href="#tracks" class="btn">Explore Our Tracks ↗</a>
+    <a href="#about" class="btn">Discover the Club</a>
 
-  <div class="hero-visual">
-    <div class="hero-orb">AWS</div>
+    <div class="hero-visual">
+      <div class="hero-orb">AWS</div>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-<div class="container reveal">
-  <p class="eyebrow">ABOUT THE COMMUNITY</p>
-  <h2>A Launchpad for <span class="gradient">Curious Minds.</span></h2>
+  <div class="container reveal">
+    <p class="eyebrow">ABOUT THE COMMUNITY</p>
+    <h2>A Launchpad for <span class="gradient">Curious Minds.</span></h2>
 
-  <p class="description">
-    AWS FUTUREVERSE brings students together to explore emerging
-    technologies, exchange ideas and build practical skills.
-    Through collaborative learning, workshops and projects,
-    we aim to turn curiosity into innovation.
-  </p>
+    <p class="description">
+      AWS FUTUREVERSE is a space for students to explore technology,
+      learn collaboratively, experiment with ideas and develop practical
+      skills for the future.
+    </p>
 
-  <div class="grid">
-    <article class="card">
-      <div class="icon">☁️</div>
-      <h3>Learn Together</h3>
-      <p>Discover cloud concepts and technology through hands-on learning.</p>
-    </article>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">☁️</div>
+        <h3>Learn Together</h3>
+        <p>Discover cloud concepts and technology through hands-on learning.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">⚡</div>
-      <h3>Build Real Projects</h3>
-      <p>Transform creative ideas into useful prototypes and applications.</p>
-    </article>
+      <article class="card">
+        <div class="icon">⚡</div>
+        <h3>Build Real Projects</h3>
+        <p>Transform creative ideas into useful prototypes and applications.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🌐</div>
-      <h3>Connect & Grow</h3>
-      <p>Collaborate with fellow students and grow your technical confidence.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🌐</div>
+        <h3>Connect & Grow</h3>
+        <p>Collaborate with fellow students and grow your technical confidence.</p>
+      </article>
+    </div>
   </div>
-</div>
+</section>
+
+<!-- MVJCE 3D CAMPUS GALLERY -->
+<section id="campus" class="campus-gallery">
+  <div class="container reveal">
+    <p class="eyebrow">A GLIMPSE OF OUR CAMPUS</p>
+    <h2>Explore <span class="gradient">MVJCE in 3D.</span></h2>
+
+    <p class="description gallery-intro">
+      From campus spaces to student experiences, discover the place where
+      future-ready ideas take shape.
+    </p>
+
+    <div class="photo-gallery">
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2025/08/central.webp"
+             alt="Central Library building at MVJ College of Engineering"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Campus spaces</span>
+          <h3>Central Library</h3>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-001.webp"
+             alt="Book shelves inside the MVJCE library"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Learn & discover</span>
+          <h3>Knowledge Hub</h3>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/001.webp"
+             alt="Students gathered for an event at MVJ College of Engineering"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Student life</span>
+          <h3>Ideas Together</h3>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/003.webp"
+             alt="MVJCE student go-kart team in action"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Build & innovate</span>
+          <h3>Engineering Spirit</h3>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2024/03/library-box-003.webp"
+             alt="Reading and study area in the MVJCE library"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Find your focus</span>
+          <h3>Study Spaces</h3>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="https://mvjce.edu.in/wp-content/uploads/2024/04/002.webp"
+             alt="Student performance during an MVJCE campus event"
+             loading="lazy">
+        <div class="photo-caption">
+          <span>Campus culture</span>
+          <h3>Beyond Classrooms</h3>
+        </div>
+      </article>
+    </div>
+
+    <p class="gallery-note">
+      Campus images sourced from the official MVJCE website.
+      Hover over a card on desktop to see the 3D lift effect.
+    </p>
+  </div>
 </section>
 
 <!-- TRACKS -->
 <section id="tracks">
-<div class="container reveal">
-  <p class="eyebrow">EXPLORE YOUR PATH</p>
-  <h2>Choose Your <span class="gradient">Technology Track.</span></h2>
+  <div class="container reveal">
+    <p class="eyebrow">EXPLORE YOUR PATH</p>
+    <h2>Choose Your <span class="gradient">Technology Track.</span></h2>
 
-  <div class="grid">
-    <article class="card">
-      <div class="icon">☁️</div>
-      <h3>Cloud Computing</h3>
-      <p>Explore cloud infrastructure, storage, networking and scalable applications.</p>
-    </article>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">☁️</div>
+        <h3>Cloud Computing</h3>
+        <p>Explore cloud infrastructure, storage, networking and scalable applications.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🤖</div>
-      <h3>AI & Machine Learning</h3>
-      <p>Discover intelligent systems, machine learning and generative AI.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🤖</div>
+        <h3>AI & Machine Learning</h3>
+        <p>Discover intelligent systems, machine learning and generative AI.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🛡️</div>
-      <h3>Cybersecurity</h3>
-      <p>Learn about digital security, identity, privacy and safer systems.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🛡️</div>
+        <h3>Cybersecurity</h3>
+        <p>Learn about digital security, identity, privacy and safer systems.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">💻</div>
-      <h3>Web Development</h3>
-      <p>Create websites and applications using modern development technologies.</p>
-    </article>
+      <article class="card">
+        <div class="icon">💻</div>
+        <h3>Web Development</h3>
+        <p>Create websites and applications using modern development technologies.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">📊</div>
-      <h3>Data Analytics</h3>
-      <p>Turn information into useful insights using data and visualisation.</p>
-    </article>
+      <article class="card">
+        <div class="icon">📊</div>
+        <h3>Data Analytics</h3>
+        <p>Turn information into useful insights using data and visualisation.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">⚙️</div>
-      <h3>Emerging Technology</h3>
-      <p>Experiment with automation, connected devices and new innovations.</p>
-    </article>
+      <article class="card">
+        <div class="icon">⚙️</div>
+        <h3>Emerging Technology</h3>
+        <p>Experiment with automation, connected devices and new innovations.</p>
+      </article>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- EVENTS -->
 <section id="events">
-<div class="container reveal">
-  <p class="eyebrow">LEARN · EXPLORE · CREATE</p>
-  <h2>Experiences That <span class="gradient">Spark Ideas.</span></h2>
+  <div class="container reveal">
+    <p class="eyebrow">LEARN · EXPLORE · CREATE</p>
+    <h2>Experiences That <span class="gradient">Spark Ideas.</span></h2>
 
-  <div class="grid">
-    <article class="card">
-      <div class="icon">🚀</div>
-      <h3>Cloud Launchpad</h3>
-      <p>An introductory workshop exploring cloud computing fundamentals.</p>
-    </article>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">🚀</div>
+        <h3>Cloud Launchpad</h3>
+        <p>An introductory workshop exploring cloud computing fundamentals.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">⚡</div>
-      <h3>Futureverse Buildathon</h3>
-      <p>A collaborative event where teams turn ideas into prototypes.</p>
-    </article>
+      <article class="card">
+        <div class="icon">⚡</div>
+        <h3>Futureverse Buildathon</h3>
+        <p>A collaborative event where teams turn ideas into prototypes.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🎤</div>
-      <h3>Tech Talks</h3>
-      <p>Share knowledge, demonstrate projects and explore emerging technologies.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🎤</div>
+        <h3>Tech Talks</h3>
+        <p>Share knowledge, demonstrate projects and explore emerging technologies.</p>
+      </article>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-<div class="container reveal">
-  <p class="eyebrow">IDEAS INTO IMPACT</p>
-  <h2>Ideas Become <span class="gradient">Innovation.</span></h2>
+  <div class="container reveal">
+    <p class="eyebrow">IDEAS INTO IMPACT</p>
+    <h2>Ideas Become <span class="gradient">Innovation.</span></h2>
 
-  <div class="grid">
-    <article class="card">
-      <div class="icon">🏫</div>
-      <h3>Smart Campus</h3>
-      <p>A concept for a campus dashboard with helpful information and data insights.</p>
-    </article>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">🏫</div>
+        <h3>Smart Campus</h3>
+        <p>A concept for a campus dashboard with helpful information and data insights.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🔐</div>
-      <h3>Secure File Vault</h3>
-      <p>A learning project exploring authentication and secure file storage.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🔐</div>
+        <h3>Secure File Vault</h3>
+        <p>A learning project exploring authentication and secure file storage.</p>
+      </article>
 
-    <article class="card">
-      <div class="icon">🌱</div>
-      <h3>AI for Good</h3>
-      <p>Explore AI-powered ideas for education, agriculture and sustainability.</p>
-    </article>
+      <article class="card">
+        <div class="icon">🌱</div>
+        <h3>AI for Good</h3>
+        <p>Explore AI-powered ideas for education, agriculture and sustainability.</p>
+      </article>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- JOIN -->
 <section id="join">
-<div class="container reveal">
-  <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+  <div class="container reveal">
+    <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
 
-  <h2>Enter the <span class="gradient">Futureverse.</span></h2>
+    <h2>Enter the <span class="gradient">Futureverse.</span></h2>
 
-  <p class="description">
-    Curious about cloud, AI or emerging technologies?
-    Connect with fellow learners and start building your future.
-  </p>
+    <p class="description">
+      Curious about cloud, AI or emerging technologies?
+      Connect with fellow learners and start building your future.
+    </p>
 
-  <a class="btn" href="https://mvjce.edu.in/" target="_blank" rel="noopener">
-    Visit MVJCE Website ↗
-  </a>
-</div>
+    <a class="btn" href="https://mvjce.edu.in/" target="_blank" rel="noopener">
+      Visit MVJCE Website ↗
+    </a>
+  </div>
 </section>
 
 </main>
@@ -721,7 +1063,6 @@ const ctx = canvas.getContext("2d");
 
 let particles = [];
 let width, height;
-let animationFrame;
 
 function resizeCanvas() {
   width = canvas.width = window.innerWidth;
@@ -794,13 +1135,42 @@ function animateParticles() {
     }
   }
 
-  animationFrame = requestAnimationFrame(animateParticles);
+  requestAnimationFrame(animateParticles);
 }
 
 resizeCanvas();
 animateParticles();
 
 window.addEventListener("resize", resizeCanvas);
+
+// 3D CAMPUS PHOTO INTERACTION
+const campusCards = document.querySelectorAll(".photo-card");
+const reduceMotion =
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (
+  !reduceMotion &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches
+) {
+  campusCards.forEach(card => {
+    card.addEventListener("pointermove", event => {
+      const rect = card.getBoundingClientRect();
+
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+
+      const rotateY = (x - 0.5) * 12;
+      const rotateX = (0.5 - y) * 9;
+
+      card.style.transform =
+        `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
 
 // SCROLL REVEAL ANIMATIONS
 const observer = new IntersectionObserver(entries => {
